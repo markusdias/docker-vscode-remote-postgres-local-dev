@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./workspace:/home/coder/project
+      - code-server-data:/home/coder/project
     env_file:
       - .env
     environment:
@@ -52,6 +52,7 @@ services:
 volumes:
   postgres-data:
   pgadmin-data:
+  code-server-data:
 
 networks:
   dev-network:
