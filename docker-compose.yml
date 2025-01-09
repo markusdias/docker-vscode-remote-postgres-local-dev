@@ -1,8 +1,6 @@
 services:
   code-server:
-    build:
-      context: .
-      dockerfile: Dockerfile.code-server
+    image: codercom/code-server:latest
     container_name: code-server
     ports:
       - "8080:8080"
