@@ -54,6 +54,7 @@ volumes:
   postgres-data:
   pgadmin-data:
   code-server-data:
+  code-server-config:
 
 networks:
   dev-network:
