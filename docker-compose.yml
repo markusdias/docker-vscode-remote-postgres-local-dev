@@ -1,12 +1,13 @@
 services:
   code-server:
-    image: codercom/code-server:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.code-server
     container_name: code-server
     ports:
       - "8080:8080"
     volumes:
-      - code-server-data:/home/coder/project
-      - code-server-config:/home/coder/.config/code-server
+      - code-server-home:/home
     user: "1000:1000"
     env_file:
       - .env
@@ -97,8 +98,7 @@ services:
 volumes:
   postgres-data:
   pgadmin-data:
-  code-server-data:
-  code-server-config:
+  code-server-home:
 
 networks:
   dev-network:
