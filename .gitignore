@@ -1,0 +1,12 @@
+# Arquivos de ambiente
+.env
+
+# Backups de banco de dados
+*.sql
+
+# Backups de volumes
+*.tar
+
+# Diretórios do Docker
+**/node_modules/
+**/vendor/
