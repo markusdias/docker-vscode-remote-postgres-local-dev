@@ -78,6 +78,63 @@ docker exec -t postgres pg_dumpall -c -U ${POSTGRES_USER} > dump_$(date +%Y-%m-%
 docker run --rm -v code-server-data:/volume -v $(pwd):/backup alpine tar cvf /backup/code-server-backup.tar /volume
 ```
 
+## Exemplo de .env.example
+
+```bash
+# VSCode Server
+VSCODE_PASSWORD=senha_segura
+
+# PostgreSQL
+POSTGRES_USER=usuario
+POSTGRES_PASSWORD=senha_forte
+POSTGRES_DB=meu_banco
+
+# pgAdmin
+PGADMIN_EMAIL=admin@example.com
+PGADMIN_PASSWORD=senha_admin
+```
+
+## Comandos Úteis do PostgreSQL
+
+- Conectar ao banco:
+```bash
+docker exec -it postgres psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+```
+
+- Listar bancos de dados:
+```sql
+\l
+```
+
+- Listar tabelas:
+```sql
+\dt
+```
+
+## Desenvolvimento Local
+
+Para desenvolvimento local, crie um arquivo `docker-compose.override.yml` com:
+
+```yaml
+version: '3.8'
+
+services:
+  code-server:
+    volumes:
+      - ./:/home/coder/project
+```
+
+## Troubleshooting
+
+### Serviços não iniciam
+- Verifique logs com: `docker-compose logs -f [serviço]`
+- Confira se o arquivo .env está configurado corretamente
+- Verifique se as portas necessárias estão disponíveis
+
+### Problemas de conexão
+- Verifique status dos serviços: `docker-compose ps`
+- Teste healthchecks: `docker inspect --format='{{json .State.Health}}' [container]`
+
 ## Considerações Finais
 
 - O código fonte deve ser versionado no GitHub/GitLab

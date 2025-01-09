@@ -10,3 +10,14 @@
 # Diretórios do Docker
 **/node_modules/
 **/vendor/
+
+# Arquivos de IDE
+.vscode/
+.idea/
+
+# Arquivos de log
+*.log
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
